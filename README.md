@@ -24,4 +24,4 @@ The C++ implementation of CPL-Sync can be built and exported as a CMake project.
 
 The C++ implementations of CPL-Sync contained herein are copyright (C) 2018 - 2019 by Taosha Fan, and are distributed under the terms of the GNU Lesser General Public License (LGPL) version 3 (or later).  Please see the [LICENSE](./LICENSE) for more information.
 
-Contact: taosha.fan@gmail.com
+Contact: taosha.fan@gmail.com, hanlinwang@u.northwestern.edu
