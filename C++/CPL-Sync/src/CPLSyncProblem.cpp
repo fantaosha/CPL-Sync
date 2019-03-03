@@ -430,8 +430,10 @@ bool CPLSyncProblem::compute_S_minus_Lambda_min_eig(
   // the case that the relaxation is not exact.
   ComplexVector v0 = Y.col(0);
 
+  Scalar d = (form_ == Formulation::Simplified) ? .01 : .03;
+
   v0.noalias() +=
-      (.03 * v0.norm()) * ComplexVector::Random(v0.size()).normalized();
+      (d * v0.norm()) * ComplexVector::Random(v0.size()).normalized();
 
   // Use this to initialize the eigensolver
   min_eigensolver.init((Scalar *)v0.data());
