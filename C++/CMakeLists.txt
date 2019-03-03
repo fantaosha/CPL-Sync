@@ -26,7 +26,7 @@ set(EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_BINARY_DIR}/bin CACHE PATH "The direc
 # Enable faster instruction sets (SIMD/AVX)
 set(ENABLE_FAST_INSTRUCTIONS ON CACHE BOOL "Enable faster instruction sets (SIMD/AVX)")
 # Enable OpenMP (if available)
-set(ENABLE_OPENMP OFF CACHE BOOL "Enable OpenMP (if available)")
+set(ENABLE_OPENMP ON CACHE BOOL "Enable OpenMP (if available)")
 # Enable code profiling using gperftools
 set(ENABLE_PROFILING OFF CACHE BOOL "Enable code profiling using gperftools")
 

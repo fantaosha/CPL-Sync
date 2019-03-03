@@ -41,8 +41,8 @@ int main(int argc, char *argv[]) {
     opts.verbose = true; // Print output to stdout
     opts.reg_Cholesky_precon_max_condition_number = 2e6;
 
-#if (_OPENMP)
-    opts_cpl.num_threads = 4;
+#if defined(_OPENMP)
+    opts.num_threads = 4;
 #endif
 
     CPLSync::CPLSyncResult results = CPLSync::CPLSync(measurements, opts);
@@ -63,8 +63,8 @@ int main(int argc, char *argv[]) {
     opts.verbose = true; // Print output to stdout
     opts.reg_Cholesky_precon_max_condition_number = 2e6;
 
-#if (_OPENMP)
-    opts_cpl.num_threads = 4;
+#if defined(_OPENMP)
+    opts.num_threads = 4;
 #endif
 
     SESync::SESyncResult results = SESync::SESync(measurements, opts);
