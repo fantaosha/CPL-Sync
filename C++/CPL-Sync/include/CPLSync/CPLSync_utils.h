@@ -1,6 +1,6 @@
 /** This file provides a convenient set of utility functions for reading in a
-set of pose-graph SLAM measurements and constructing the corresponding data
-matrices used in the CPL-Sync algorithm.
+ * set of pose-graph SLAM measurements and constructing the corresponding data
+ * matrices used in the CPL-Sync algorithm.
  *
  * Copyright (C) 2018 - 2019 by Taosha Fan (taosha.fan@gmail.com)
  */

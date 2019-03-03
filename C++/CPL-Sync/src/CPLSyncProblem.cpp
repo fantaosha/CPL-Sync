@@ -179,10 +179,10 @@ CPLSyncProblem::CPLSyncProblem(
 
       Scalar lambda_max = max_eig_solver.eigenvalues()(0);
       reg_Chol_precon_.compute(
-          M + RealSparseMatrix(
-                  RealVector::Constant(M.rows(),
-                                       lambda_max / reg_Chol_precon_max_cond_)
-                      .asDiagonal()));
+          M +
+          RealSparseMatrix(RealVector::Constant(
+                               M.rows(), lambda_max / reg_Chol_precon_max_cond_)
+                               .asDiagonal()));
     }
   }
 }
@@ -430,7 +430,8 @@ bool CPLSyncProblem::compute_S_minus_Lambda_min_eig(
   // the case that the relaxation is not exact.
   ComplexVector v0 = Y.col(0);
 
-  v0.noalias() += (.03 * v0.norm()) * ComplexVector::Random(v0.size()).normalized();
+  v0.noalias() +=
+      (.03 * v0.norm()) * ComplexVector::Random(v0.size()).normalized();
 
   // Use this to initialize the eigensolver
   min_eigensolver.init((Scalar *)v0.data());
@@ -542,7 +543,7 @@ void CPLSyncProblem::SMinusLambdaProdFunctor::perform_op(const Scalar *x,
 
   Y = problem_->data_matrix_product(X);
 
-  size_t const & nn = problem_->num_poses();
+  size_t const &nn = problem_->num_poses();
 
   Y.tail(nn).noalias() -= Lambda_ * X.tail(nn);
 

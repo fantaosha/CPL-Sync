@@ -123,7 +123,8 @@ struct CPLSyncOpts {
   bool log_iterates = false;
 
 #if defined(_OPENMP)
-  /** The number of threads to use for parallelization (assuming that CPL-Sync is
+  /** The number of threads to use for parallelization (assuming that CPL-Sync
+   * is
    * built using a compiler that supports OpenMP */
   size_t num_threads = 1;
 #endif

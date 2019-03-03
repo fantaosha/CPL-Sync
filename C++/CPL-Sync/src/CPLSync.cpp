@@ -503,6 +503,16 @@ CPLSyncResult CPLSync(CPLSyncProblem &problem, const CPLSyncOpts &options,
               << CPLSyncResults.total_computation_time << " seconds"
               << std::endl
               << std::endl;
+    std::cout
+        << "Total elapsed computation time without second order optimiality "
+           "condition check: "
+        << CPLSyncResults.total_computation_time -
+               Eigen::Map<RealVector>(
+                   CPLSyncResults.minimum_eigenvalue_computation_times.data(),
+                   CPLSyncResults.minimum_eigenvalue_computation_times.size())
+                   .sum()
+        << " seconds" << std::endl
+        << std::endl;
 
     std::cout << "===== END CPL-SYNC =====" << std::endl << std::endl;
   } // if (options.verbose)

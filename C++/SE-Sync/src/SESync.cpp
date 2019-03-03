@@ -50,11 +50,10 @@ SESyncResult SESync(SESyncProblem &problem, const SESyncOpts &options,
                  "nonnegative in optimality verification: "
               << options.min_eig_num_tol << std::endl;
     if (options.formulation == Formulation::Simplified) {
-      std::cout << " Using "
-                << (problem.projection_factorization() ==
-                            ProjectionFactorization::Cholesky
-                        ? "Cholesky"
-                        : "QR")
+      std::cout << " Using " << (problem.projection_factorization() ==
+                                         ProjectionFactorization::Cholesky
+                                     ? "Cholesky"
+                                     : "QR")
                 << " decomposition to compute orthogonal projections"
                 << std::endl;
     }
@@ -125,27 +124,26 @@ SESyncResult SESync(SESyncProblem &problem, const SESyncOpts &options,
       };
 
   // Local quadratic model constructor
-  Optimization::Smooth::QuadraticModel<Matrix, Matrix, Matrix> QM =
-      [&problem](
-          const Matrix &Y, Matrix &grad,
-          Optimization::Smooth::LinearOperator<Matrix, Matrix, Matrix> &HessOp,
-          Matrix &NablaF_Y) {
-        // Compute and cache Euclidean gradient at the current iterate
-        NablaF_Y = problem.Euclidean_gradient(Y);
+  Optimization::Smooth::QuadraticModel<Matrix, Matrix, Matrix> QM = [&problem](
+      const Matrix &Y, Matrix &grad,
+      Optimization::Smooth::LinearOperator<Matrix, Matrix, Matrix> &HessOp,
+      Matrix &NablaF_Y) {
+    // Compute and cache Euclidean gradient at the current iterate
+    NablaF_Y = problem.Euclidean_gradient(Y);
 
-        // Compute Riemannian gradient from Euclidean gradient
-        grad = problem.Riemannian_gradient(Y, NablaF_Y);
+    // Compute Riemannian gradient from Euclidean gradient
+    grad = problem.Riemannian_gradient(Y, NablaF_Y);
 
-        // Compute Riemannian gradient from Euclidean gradient
-        grad = problem.Riemannian_gradient(Y, NablaF_Y);
+    // Compute Riemannian gradient from Euclidean gradient
+    grad = problem.Riemannian_gradient(Y, NablaF_Y);
 
-        // Define linear operator for computing Riemannian Hessian-vector
-        // products (cf. eq. (44) in the SE-Sync tech report)
-        HessOp = [&problem](const Matrix &Y, const Matrix &Ydot,
-                            const Matrix &NablaF_Y) {
-          return problem.Riemannian_Hessian_vector_product(Y, NablaF_Y, Ydot);
-        };
-      };
+    // Define linear operator for computing Riemannian Hessian-vector
+    // products (cf. eq. (44) in the SE-Sync tech report)
+    HessOp = [&problem](const Matrix &Y, const Matrix &Ydot,
+                        const Matrix &NablaF_Y) {
+      return problem.Riemannian_Hessian_vector_product(Y, NablaF_Y, Ydot);
+    };
+  };
 
   // Riemannian metric
 
@@ -500,6 +498,16 @@ SESyncResult SESync(SESyncProblem &problem, const SESyncOpts &options,
     std::cout << "Total elapsed computation time: "
               << SESyncResults.total_computation_time << " seconds" << std::endl
               << std::endl;
+    std::cout
+        << "Total elapsed computation time without second order optimiality "
+           "condition check: "
+        << SESyncResults.total_computation_time -
+               Eigen::Map<Vector>(
+                   SESyncResults.minimum_eigenvalue_computation_times.data(),
+                   SESyncResults.minimum_eigenvalue_computation_times.size())
+                   .sum()
+        << " seconds" << std::endl
+        << std::endl;
 
     std::cout << "===== END SE-SYNC =====" << std::endl << std::endl;
   } // if (options.verbose)

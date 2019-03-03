@@ -132,12 +132,14 @@ public:
   Scalar reg_Chol_precon_max_cond_;
 
   /** The underlying manifold in which the generalized orientations lie in the
-  rank-restricted Riemannian optimization problem (Problem 9 in the CPL-Sync tech
+  rank-restricted Riemannian optimization problem (Problem 9 in the CPL-Sync
+  tech
   report).*/
   Oblique OB_;
 
   /** The retraction map used in Riemannian optimization.*/
-  ComplexMatrix (Oblique::*retract_)(const ComplexMatrix &, const ComplexMatrix &) const;
+  ComplexMatrix (Oblique::*retract_)(const ComplexMatrix &,
+                                     const ComplexMatrix &) const;
 
 public:
   /// CONSTRUCTORS AND MUTATORS
@@ -269,7 +271,8 @@ public:
   ComplexMatrix Riemannian_gradient(const ComplexMatrix &Y,
                                     const ComplexMatrix &nablaF_Y) const;
 
-  /** Given a matrix Y in the domain D of the CPL-Sync optimization problem, this
+  /** Given a matrix Y in the domain D of the CPL-Sync optimization problem,
+   * this
    * function computes and returns grad F(Y), the *Riemannian* gradient of F
    * at Y */
   ComplexMatrix Riemannian_gradient(const ComplexMatrix &Y) const;
@@ -298,14 +301,16 @@ public:
   ComplexMatrix precondition(const ComplexMatrix &Y,
                              const ComplexMatrix &dotY) const;
 
-  /** Given a matrix Y in the domain D of the CPL-Sync optimization problem and a
+  /** Given a matrix Y in the domain D of the CPL-Sync optimization problem and
+  a
   tangent vector dotY in T_Y(E), the tangent space of Y considered as a generic
   matrix, this function computes and returns the orthogonal projection of dotY
   onto T_D(Y), the tangent space of the domain D at Y*/
   ComplexMatrix tangent_space_projection(const ComplexMatrix &Y,
                                          const ComplexMatrix &dotY) const;
 
-  /** Given a matrix Y in the domain D of the CPL-Sync optimization problem and a
+  /** Given a matrix Y in the domain D of the CPL-Sync optimization problem and
+   * a
    * tangent vector dotY in T_D(Y), this function returns the point Yplus in D
    * obtained by retracting along dotY */
   ComplexMatrix retract(const ComplexMatrix &Y,
