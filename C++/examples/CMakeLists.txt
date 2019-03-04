@@ -13,4 +13,4 @@ set_target_properties(CPL-Sync PROPERTIES COMPILE_FLAGS ${OpenMP_CXX_FLAGS})
 endif()
 endif()
 
-message(STATUS "Building main SE-Sync command-line executable in directory ${EXECUTABLE_OUTPUT_PATH}\n")
+message(STATUS "Building main CPL-Sync command-line executable in directory ${EXECUTABLE_OUTPUT_PATH}\n")

@@ -398,7 +398,8 @@ ComplexVector chordal_initialization(const ComplexSparseMatrix &B3) {
   Rchordal(0) = 1;
   Rchordal.tail(num_poses - 1) = -QR.solve(cR);
 
-  Rchordal.array() /= Rchordal.array().abs();
+  //Rchordal.array() /= Rchordal.array().abs();
+  Rchordal.tail(num_poses - 1).rowwise().normalize();
 
   return Rchordal;
 }
