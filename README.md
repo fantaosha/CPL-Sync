@@ -1,4 +1,4 @@
->**Note**: It is important to use our provided [Eigen](./C++/Eigen) library to implement CPL-Sync.
+>**Note**: It is important to use our provided [Eigen](./C++/Eigen) library or [CholmodSupport.h](./C++/Eigen/Eigen/src/CholmodSupport/CholmodSupport.h) when compiling CPL-Sync.
 
 # CPL-Sync
 
