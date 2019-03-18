@@ -17,6 +17,8 @@ The performance comparison of  SE-Sync and CPL-Sync on planar PGO is shown as fo
 </p>
 
 # Getting Started
+>**Note**: It is important to use our provided [Eigen](./C++/Eigen) library or [CholmodSupport.h](./C++/Eigen/Eigen/src/CholmodSupport/CholmodSupport.h) when compiling CPL-Sync.
+
 
 The C++ implementation of CPL-Sync can be built and exported as a CMake project. For a minimal working example, see [examples/cpl_sync](./C++/examples/cpl_sync.cpp), which provides a simple command-line utility for processing .g2o files.
 
