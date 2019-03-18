@@ -1,3 +1,5 @@
+>**Note**: It is important to use our provided [Eigen](./C++/Eigen) library to implement CPL-Sync.
+
 # CPL-Sync
 
 **CPL-Sync** is an *efficient and certifiably correct* algorithm that solves planar pose graph optimization (PGO) using the complex number representation.
@@ -17,8 +19,6 @@ The performance comparison of  SE-Sync and CPL-Sync on planar PGO is shown as fo
 # Getting Started
 
 The C++ implementation of CPL-Sync can be built and exported as a CMake project. For a minimal working example, see [examples/cpl_sync](./C++/examples/cpl_sync.cpp), which provides a simple command-line utility for processing .g2o files.
-
-**It is important to use our provided [Eigen](./C++/Eigen) package to make CPL-Sync work.**
 
 ## Copyright and License 
 
