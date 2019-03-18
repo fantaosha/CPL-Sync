@@ -14,11 +14,11 @@ The performance comparison of  SE-Sync and CPL-Sync on planar PGO is shown as fo
   <img src="./figures/total.png" width="400"/>
 </p>
 
-
 # Getting Started
 
 The C++ implementation of CPL-Sync can be built and exported as a CMake project. For a minimal working example, see [examples/cpl_sync](./C++/examples/cpl_sync.cpp), which provides a simple command-line utility for processing .g2o files.
 
+**It is important to use our provided [Eigen](./Eigen) package to make CPL-Sync work.**
 
 ## Copyright and License 
 
