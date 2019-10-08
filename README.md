@@ -12,8 +12,8 @@ This repository features 2 algorithms
 The performance comparison of  SE-Sync and CPL-Sync on planar PGO is shown as follows:
 
 <p float="left", align="center">
-<img src="./figures/rtr.png" width="400"/>
-  <img src="./figures/total.png" width="400"/>
+<img src="./figures/rtr.png" height="300"/>&nbsp&nbsp
+  <img src="./figures/total.png" height="300"/>
 </p>
 
 ## Getting Started
